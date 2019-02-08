@@ -32,7 +32,7 @@
  */
 
 #define SCHEME_FILE_SUFFIX	".xml"
-#define STYLES_DIR		"styles"
+#define STYLES_DIR		"skins"
 
 struct _GtkSourceStyleSchemeManagerPrivate
 {

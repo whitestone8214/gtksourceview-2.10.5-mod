@@ -1,0 +1,6 @@
+Name: GTKSourceView
+Description: Advanced text editor widget for GTK+ 2.x
+Version: 2.10.5
+Requires: gtk+-x11-2.0 libxml-2.0
+Libs: -lgtksourceview
+Cflags:

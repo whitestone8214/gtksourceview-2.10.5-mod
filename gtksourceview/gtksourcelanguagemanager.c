@@ -45,7 +45,7 @@
  */
 
 #define RNG_SCHEMA_FILE		"language2.rng"
-#define LANGUAGE_DIR		"language-specs"
+#define LANGUAGE_DIR		"rules"
 #define LANG_FILE_SUFFIX	".lang"
 
 enum {

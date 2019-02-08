@@ -27,44 +27,29 @@
 #define SOURCEVIEW_DIR "gtksourceview-2.0"
 
 
-gchar **
-_gtk_source_view_get_default_dirs (const char *basename,
-				   gboolean    compat)
-{
+gchar **_gtk_source_view_get_default_dirs (const char *basename, gboolean    compat) {
 	const gchar * const *xdg_dirs;
 	GPtrArray *dirs;
 
 	dirs = g_ptr_array_new ();
 
 	/* user dir */
-	g_ptr_array_add (dirs, g_build_filename (g_get_user_data_dir (),
-						 SOURCEVIEW_DIR,
-						 basename,
-						 NULL));
+	g_ptr_array_add (dirs, g_build_filename (DATADIR, basename, NULL));
 
 #ifdef G_OS_UNIX
 	/* Legacy gtsourceview 1 user dir, for backward compatibility */
-	if (compat)
-	{
+	if (compat) {
 		const gchar *home;
 
 		home = g_get_home_dir ();
-		if (home != NULL)
-		{
-			g_ptr_array_add (dirs,
-					 g_strdup_printf ("%s/%s",
-							  home,
-							  ".gnome2/gtksourceview-1.0/language-specs"));
-		}
+		if (home != NULL) g_ptr_array_add (dirs, g_strdup_printf ("%s/%s", home, ".gnome2/gtksourceview-1.0/language-specs"));
 	}
 #endif
 
 	/* system dir */
-	for (xdg_dirs = g_get_system_data_dirs (); xdg_dirs && *xdg_dirs; ++xdg_dirs)
-		g_ptr_array_add (dirs, g_build_filename (*xdg_dirs,
-							 SOURCEVIEW_DIR,
-							 basename,
-							 NULL));
+	for (xdg_dirs = g_get_system_data_dirs (); xdg_dirs && *xdg_dirs; ++xdg_dirs) {
+		g_ptr_array_add (dirs, g_build_filename (*xdg_dirs, SOURCEVIEW_DIR, basename, NULL));
+	}
 
 	g_ptr_array_add (dirs, NULL);
 
